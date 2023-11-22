@@ -152,6 +152,27 @@ describe('Cpe', function () {
 
       assert.equal(cpe.toString(), fstr)
     })
+
+    it('shall parse string with dashes', function () {
+      const fstr =
+        'cpe:2.3:a:\\@nubosoftware\\/node-static_project:\\@nubosoftware\\/node-static:-:*:*:*:*:node.js:*:*'
+      const cpe = new Cpe().parse(fstr)
+      assert.deepEqual(jsonify(cpe), {
+        part: 'a',
+        vendor: '@nubosoftware/node-static project',
+        product: '@nubosoftware/node-static',
+        version: '',
+        update: '*',
+        edition: '*',
+        language: '*',
+        swEdition: '*',
+        targetSw: 'node.js',
+        targetHw: '*',
+        other: '*'
+      })
+
+      assert.equal(cpe.toString(), fstr)
+    })
   })
 })
 

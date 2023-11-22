@@ -104,19 +104,15 @@ export class Cpe {
     for (let i = 0; i < FIELDS.length; i++) {
       const field = FIELDS[i]
       const value = this[field]
-      if (field === 'version') {
-        arr.push(value)
-      } else {
-        arr.push(bind(value))
-      }
+      arr.push(bind(value))
     }
     return FS_PREFIX + arr.join(':')
   }
 }
 
-// "!\"#$%&'()+,./:;<=>@[]^`{|}~*?".split('').map((c) => c.charCodeAt(0))
+// "!\"#$%&'()+,/:;<=>@[]^`{|}~*?".split('').map((c) => c.charCodeAt(0))
 const PUNCT = [
-  33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 46, 47, 58, 59, 60, 61, 62, 64,
+  33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 47, 58, 59, 60, 61, 62, 64,
   91, 93, 94, 96, 123, 124, 125, 126
 ]
 // "*?".split('').map((c) => c.charCodeAt(0))
@@ -125,6 +121,8 @@ const SPECIAL = [42, 63]
 const SPACE = [32, 9]
 // "-"
 const DASH = 45
+// "."
+const DOT = 46
 // "\\"
 const ESC = 92
 
@@ -144,13 +142,14 @@ export const bind = (inp) => {
       (code >= 0x41 && code <= 0x5a) || // A-Z
       (code >= 0x30 && code <= 0x39) || // 0-9
       (code >= 0x61 && code <= 0x7a) || // a-z
-      code === 0x5f // "_"
+      code === 0x5f || // "_"
+      code === DOT
     ) {
       out += char
     } else if (SPACE.includes(code)) {
       out += '_'
     } else if (code === DASH && i !== 0) {
-      out += prevEsc(prev) + char
+      out += char
     } else if (PUNCT.includes(code) || code === ESC) {
       out += prevEsc(prev) + char
     } else if (SPECIAL.includes(code)) {
