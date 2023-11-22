@@ -1,0 +1,60 @@
+{
+  "name": "cpe-fs",
+  "version": "1.0.0-0",
+  "description": "CPE urls",
+  "keywords": [
+    "Common Platform Enumeration",
+    "CPE",
+    "Formatted String"
+  ],
+  "homepage": "https://github.com/spurreiter/cpe-fs",
+  "bugs": {
+    "url": "https://github.com/spurreiter/cpe-fs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spurreiter/cpe-fs.git"
+  },
+  "license": "MIT",
+  "author": "spurreiter",
+  "maintainers": [
+    "spurreiter"
+  ],
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "types",
+  "files": [
+    "src",
+    "types"
+  ],
+  "scripts": {
+    "all": "npm-run-all clean lint coverage types",
+    "clean": "rimraf dist lib es coverage",
+    "coverage": "c8 -r text -r html -r lcov npm test",
+    "lint": "eslint --ext .js .",
+    "test": "mocha",
+    "types": "rimraf types; tsc"
+  },
+  "mocha": {
+    "checkLeaks": true,
+    "colors": true,
+    "exit": false
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.4",
+    "c8": "^8.0.1",
+    "eslint": "^8.54.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.3.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "mocha": "^10.2.0",
+    "npm-run-all2": "^6.1.1",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
