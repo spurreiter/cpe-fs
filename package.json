@@ -42,17 +42,17 @@
     "exit": false
   },
   "devDependencies": {
-    "@types/node": "^20.11.26",
+    "@types/node": "^20.12.4",
     "c8": "^9.1.0",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
-    "mocha": "^10.3.0",
+    "mocha": "^10.4.0",
     "npm-run-all2": "^6.1.2",
     "rimraf": "^5.0.5",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.4"
   },
   "engines": {
     "node": ">=18"
